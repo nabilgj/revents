@@ -3,14 +3,16 @@ import { Segment, Header, Form, Button } from 'semantic-ui-react';
 
 import cuid from 'cuid';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateEvent, createEvent } from '../EventActions';
 
-const EventForm = ({
-  setFormOpen,
-  setEvents,
-  createEvent,
-  selectedEvent,
-  updateEvent,
-}) => {
+const EventForm = ({ match, history }) => {
+  const dispatch = useDispatch();
+
+  const selectedEvent = useSelector((state) =>
+    state.event.events.find((e) => e.id === match.params.id)
+  );
+
   const initialValues = selectedEvent ?? {
     title: '',
     category: '',
@@ -24,16 +26,18 @@ const EventForm = ({
 
   const handleFormSubmit = (e) => {
     selectedEvent
-      ? updateEvent({ ...selectedEvent, ...values })
-      : createEvent({
-          ...values,
-          id: cuid(),
-          hostedBy: 'baba',
-          attendees: [],
-          hostPhotoURL: '/assets/user.png',
-        });
+      ? dispatch(updateEvent({ ...selectedEvent, ...values }))
+      : dispatch(
+          createEvent({
+            ...values,
+            id: cuid(),
+            hostedBy: 'baba',
+            attendees: [],
+            hostPhotoURL: '/assets/user.png',
+          })
+        );
 
-    setFormOpen(false);
+    history.push('/events');
   };
 
   const handleInputChange = (e) => {
@@ -120,5 +124,5 @@ const EventForm = ({
   );
 };
 
-// into EventDashboard
+// into App
 export default EventForm;

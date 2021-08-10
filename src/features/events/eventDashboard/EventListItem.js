@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteEvent } from '../EventActions';
 
+import { format } from 'date-fns';
+
 const EventListItem = ({ event }) => {
   const dispatch = useDispatch();
 
@@ -26,7 +28,7 @@ const EventListItem = ({ event }) => {
 
       <Segment>
         <span>
-          <Icon name="clock" /> {event.date}
+          <Icon name="clock" /> {format(event.date, 'MMMM d, yyyy h:mm a')}
           <Icon name="marker" /> {event.venue}
         </span>
       </Segment>

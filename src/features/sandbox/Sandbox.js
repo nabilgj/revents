@@ -29,7 +29,7 @@ const Sandbox = () => {
       />
 
       <Button
-        content="open modal"
+        content="Open modal"
         color="teal"
         onClick={() =>
           dispatch(openModal({ modalType: 'TestModal', modalProps: { data } }))
@@ -39,5 +39,5 @@ const Sandbox = () => {
   );
 };
 
-// into
+// into App
 export default Sandbox;

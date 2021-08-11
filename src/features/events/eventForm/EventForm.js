@@ -2,12 +2,15 @@ import React from 'react';
 import { Segment, Header, Button } from 'semantic-ui-react';
 
 import cuid from 'cuid';
+
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateEvent, createEvent } from '../EventActions';
-import { Formik, Form } from 'formik';
 
+import { updateEvent, createEvent } from '../EventActions';
+
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+
 import MyTextInput from '../../../app/common/form/MyTextInput';
 import MyTextArea from '../../../app/common/form/MyTextArea';
 import MySelectInput from '../../../app/common/form/MySelectInput';
@@ -62,7 +65,7 @@ const EventForm = ({ match, history }) => {
       >
         {({ isSubmitting, dirty, isValid }) => (
           <Form className="ui form">
-            <Header content="Event Details" sub color="teal" />
+            <Header sub color="teal" content="Event Details" />
             <MyTextInput name="title" placeholder="Event Title" />
             <MySelectInput
               name="category"
@@ -71,7 +74,7 @@ const EventForm = ({ match, history }) => {
             />
             <MyTextArea name="description" placeholder="Description" rows={3} />
 
-            <Header content="Event Location Details" sub color="teal" />
+            <Header sub color="teal" content="Event Location Details" />
             <MyTextInput name="city" placeholder="City" />
             <MyTextInput name="venue" placeholder="Venue" />
             <MyDateInput

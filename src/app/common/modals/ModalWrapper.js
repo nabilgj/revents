@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+
 import { Modal } from 'semantic-ui-react';
 import { closeModal } from './modalReducer';
 
@@ -15,5 +16,5 @@ const ModalWrapper = ({ children, size, header }) => {
   );
 };
 
-// into
+// into TestModal, LoginForm
 export default ModalWrapper;

@@ -1,6 +1,7 @@
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 
+// into Sandbox
 export const openModal = (payload) => {
   return {
     type: OPEN_MODAL,
@@ -8,6 +9,7 @@ export const openModal = (payload) => {
   };
 };
 
+// into
 export const closeModal = () => {
   return {
     type: CLOSE_MODAL,

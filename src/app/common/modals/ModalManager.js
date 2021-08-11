@@ -24,5 +24,5 @@ const ModalManager = () => {
   return <span>{renderedModal}</span>;
 };
 
-// into
+// into App
 export default ModalManager;

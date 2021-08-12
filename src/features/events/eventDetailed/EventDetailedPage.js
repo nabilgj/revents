@@ -27,5 +27,5 @@ const EventDetailedPage = ({ match }) => {
   );
 };
 
-// into
+// into App
 export default EventDetailedPage;

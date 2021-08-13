@@ -1,17 +1,45 @@
+import {
+  asyncActionStart,
+  asyncActionFisnish,
+  asyncActionError,
+} from '../../app/async/asyncReducer';
+import { delay } from '../../app/common/util/util';
+
+import { toast } from 'react-toastify';
+
 const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
+// into Sandbox
 export const increment = (amount) => {
-  return {
-    type: INCREMENT_COUNTER,
-    payload: amount,
+  return async (dispatch) => {
+    dispatch(asyncActionStart());
+
+    try {
+      await delay(1000);
+
+      dispatch({ type: INCREMENT_COUNTER, payload: amount });
+      dispatch(asyncActionFisnish());
+    } catch (error) {
+      dispatch(asyncActionError(error));
+      toast.error(error);
+    }
   };
 };
 
+// into Sandbox
 export const decrement = (amount) => {
-  return {
-    type: DECREMENT_COUNTER,
-    payload: amount,
+  return async (dispatch) => {
+    dispatch(asyncActionStart());
+
+    try {
+      await delay(1000);
+
+      dispatch({ type: DECREMENT_COUNTER, payload: amount });
+      dispatch(asyncActionFisnish());
+    } catch (error) {
+      dispatch(asyncActionError(error));
+    }
   };
 };
 
